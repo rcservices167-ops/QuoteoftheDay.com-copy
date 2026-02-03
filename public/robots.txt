@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+Disallow: /api/
+Disallow: /admin/
+
+# Sitemap - auto-updated daily with today's date
+Sitemap: https://quoteoftheday.com/sitemap.xml

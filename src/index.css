@@ -1,0 +1,81 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.external-header-wrapper,
+.external-footer-wrapper {
+  width: 100%;
+}
+
+.external-header-wrapper * {
+  box-sizing: border-box;
+}
+
+.external-footer-wrapper * {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  overflow-x: hidden;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+@media (max-width: 768px) {
+  /* HEADER: Force all links into 1 row that scrolls horizontally */
+  .external-header-wrapper .daily-network-link,
+  .external-header-wrapper a,
+  .external-header-wrapper button {
+    font-size: 0.65rem !important;
+    padding: 0.35rem 0.4rem !important;
+    white-space: nowrap !important;
+    flex-shrink: 0 !important;
+    min-width: auto !important;
+  }
+
+  /* Target inline flex containers and force them to wrap properly */
+  .external-header-wrapper [style*="flex"],
+  .external-header-wrapper [style*="display: flex"],
+  .external-header-wrapper > div > div {
+    flex-wrap: nowrap !important;
+    overflow-x: auto !important;
+    gap: 0.2rem !important;
+    -webkit-overflow-scrolling: touch !important;
+  }
+
+  /* Hide scrollbar for clean appearance */
+  .external-header-wrapper [style*="flex"]::-webkit-scrollbar,
+  .external-header-wrapper > div > div::-webkit-scrollbar {
+    height: 0px;
+    display: none;
+  }
+
+  /* FOOTER: Force exactly 2 cards per row */
+  .external-footer-wrapper [style*="grid"],
+  .external-footer-wrapper [class*="grid"],
+  .external-footer-wrapper > div > div {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 0.75rem !important;
+  }
+
+  /* Adjust footer link sizing */
+  .external-footer-wrapper a,
+  .external-footer-wrapper [class*="category"] {
+    font-size: 0.85rem !important;
+    padding: 0.5rem !important;
+  }
+}
