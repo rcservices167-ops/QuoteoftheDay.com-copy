@@ -12,6 +12,19 @@ import {
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const projectRoot = path.resolve(__dirname, '..');
+const envPath = path.join(projectRoot, '.env');
+
+const envContent = fs.readFileSync(envPath, 'utf-8');
+envContent.split('\n').forEach(line => {
+  const [key, ...valueParts] = line.split('=');
+  if (key && valueParts.length > 0) {
+    const value = valueParts.join('=').trim();
+    if (value) {
+      process.env[key.trim()] = value;
+    }
+  }
+});
+
 const publicDir = path.join(projectRoot, 'public');
 const archivesBaseDir = path.join(publicDir, 'archives');
 
